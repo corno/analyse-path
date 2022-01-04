@@ -7,7 +7,7 @@
   "author": "Corno",
   "license": "ISC",
   "dependencies": {
-    "pareto-runtime": "^0.16.1"
+    "pareto-runtime": "^0.16.4"
   },
   "devDependencies": {
     "@types/node": "^17.0.7"
