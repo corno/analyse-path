@@ -1,13 +1,13 @@
 {
   "name": "analyse-path",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "analyses a file system path against a specified expected filesystem structure",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Corno",
   "license": "ISC",
   "dependencies": {
-    "pareto-runtime": "^0.16.0"
+    "pareto-runtime": "^0.16.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.7"
