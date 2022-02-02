@@ -1,6 +1,6 @@
 {
   "name": "analyse-path",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "analyses a file system path against a specified expected filesystem structure",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
