@@ -10,6 +10,7 @@ export type TTypeDirectory = {
 }
 
 export type TFilesDictionary = {
+    readonly "allow missing extension": boolean
     readonly "extensions": string[]
     readonly "recursive": boolean
 }

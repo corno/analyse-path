@@ -19,7 +19,7 @@ export function analysePath(
         getCurrentStepName(): T,
         getCurrentSteps(): T[],
     }
-    
+
     function createPathIterator<T>(
         splittedPath: T[]
     ): PathIterator<T> {
@@ -95,20 +95,33 @@ export function analysePath(
                         const newPathPattern = `${pathPattern}${$d.recursive ? "/**" : ""}/*.${filePath.extension}`
 
                         if (filePath.extension === null) {
-                            throw new Error(`implement me ${filePath.fileName}`)
-                        }
-                        if ($d.extensions.includes(filePath.extension)) {
-                            return createAnalysisResult(
-                                pi,
-                                newPathPattern,
-                                null,
-                            )
+                            if (!$d["allow missing extension"]) {
+                                return createAnalysisResult(
+                                    pi,
+                                    newPathPattern,
+                                    `unexpected missing extension`,
+                                )
+                            } else {
+                                return createAnalysisResult(
+                                    pi,
+                                    newPathPattern,
+                                    null,
+                                )
+                            }
                         } else {
-                            return createAnalysisResult(
-                                pi,
-                                newPathPattern,
-                                `unexpected extension: '${filePath.extension}'`,
-                            )
+                            if ($d.extensions.includes(filePath.extension)) {
+                                return createAnalysisResult(
+                                    pi,
+                                    newPathPattern,
+                                    null,
+                                )
+                            } else {
+                                return createAnalysisResult(
+                                    pi,
+                                    newPathPattern,
+                                    `unexpected extension: '${filePath.extension}'`,
+                                )
+                            }
                         }
                     }
 

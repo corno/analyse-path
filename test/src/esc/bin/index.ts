@@ -6,14 +6,11 @@ import * as pt from "pareto-test"
 import * as ap from "../../../../pub"
 import { testProject } from "../../data/testProject"
 
-pt.createTestContext(
-    {
-        numberOfFirstLine: 1,
-    },
+pt.runTests(
     {
         callback: ($i) => {
 
-            $i.testset(
+            $i.subset(
                 "path tests",
                 ($i) => {
 
@@ -79,15 +76,7 @@ pt.createTestContext(
                     test("fddnr/a/y.txt", "did not expect a directory", "/fddnr/*[txt]", "/fddnr")
                 },
             )
-
         },
-        log: ($) => {
-            console.log($)
-        },
-        onEnd: ($) => {
-            if ($.errorCount > 0) {
-                pr.processExit(1)
-            }
-        },
+        log: pr.log,
     }
 )

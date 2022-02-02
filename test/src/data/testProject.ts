@@ -35,6 +35,7 @@ export const testProject: ap.TDirectory = {
             "fdd": {
                 type: ["directory", {
                     "type": ["files dictionary", {
+                        "allow missing extension": false,
                         "extensions": ["txt"],
                         recursive: true,
                     }]
@@ -43,6 +44,7 @@ export const testProject: ap.TDirectory = {
             "fddnr": {
                 type: ["directory", {
                     "type": ["files dictionary", {
+                        "allow missing extension": false,
                         "extensions": ["txt"],
                         recursive: false,
                     }]
