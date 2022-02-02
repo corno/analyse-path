@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "pareto-runtime": "^0.16.4",
-    "pareto-test": "^0.3.4"
+    "pareto-runtime": "^0.18.0",
+    "pareto-test": "^0.9.1"
   }
 }
