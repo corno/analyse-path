@@ -1,6 +1,6 @@
 import * as ap from "../../../pub"
 
-export const testProject: ap.TDirectory = {
+export const _testProject: ap.TDirectory = {
     type: ["type", {
         nodes: {
             "f.txt": {
@@ -36,7 +36,7 @@ export const testProject: ap.TDirectory = {
                 type: ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
-                        "extensions": ["txt"],
+                        "extensions": ([`txt`]),
                         recursive: true,
                     }]
                 }]
@@ -45,7 +45,7 @@ export const testProject: ap.TDirectory = {
                 type: ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
-                        "extensions": ["txt"],
+                        "extensions": ([`txt`]),
                         recursive: false,
                     }]
                 }]

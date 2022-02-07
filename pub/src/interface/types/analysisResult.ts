@@ -1,6 +1,7 @@
+import * as pr from "pareto-runtime"
 
-export type AnalysisResult = {
-    pathPattern: string,
-    path: string[],
-    error: string | null,
+export type TAnalysisResult = {
+    readonly "pathPattern": string,
+    readonly "path": string[],
+    readonly "error": pr.optional<string>,
 }

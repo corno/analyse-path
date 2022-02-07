@@ -1,14 +1,13 @@
 import * as pr from "pareto-runtime"
 
-import * as path from "path"
-import { AnalysisResult } from "../interface/types/analysisResult"
+import { TAnalysisResult } from "../interface/types/analysisResult"
 import { TDirectory } from "../interface/types/fileSystemStructure"
-import { ParsedFilePath } from "../interface/types/parsedFilePath"
+import { TParsedFilePath } from "../interface/types/parsedFilePath"
 
 export function analysePath(
     def: TDirectory,
-    filePath: ParsedFilePath
-): AnalysisResult {
+    filePath: TParsedFilePath
+): TAnalysisResult {
     const fileNameWithExtension = `${filePath.fileName}${filePath.extension === null ? "" : `.${filePath.extension}`}`
 
     type PathIterator<T> = {
@@ -47,7 +46,7 @@ export function analysePath(
         pi: PathIterator<string>,
         pathPattern: string,
         error: null | string,
-    ): AnalysisResult {
+    ): TAnalysisResult {
 
         return {
             pathPattern: pathPattern,
@@ -68,7 +67,7 @@ export function analysePath(
         pi: PathIterator<string>,
         $d: TDirectory,
         pathPattern: string,
-    ): AnalysisResult {
+    ): TAnalysisResult {
         switch ($d.type[0]) {
             case "directory dictionary":
                 return pr.cc($d.type[1], ($d) => {
@@ -91,7 +90,7 @@ export function analysePath(
                 return pr.cc($d.type[1], ($d) => {
                     function handleFile(
                         pi: PathIterator<string>,
-                    ): AnalysisResult {
+                    ): TAnalysisResult {
                         const newPathPattern = `${pathPattern}${$d.recursive ? "/**" : ""}/*.${filePath.extension}`
 
                         if (filePath.extension === null) {
@@ -127,7 +126,7 @@ export function analysePath(
 
                     function recurse(
                         pi: PathIterator<string>
-                    ): AnalysisResult {
+                    ): TAnalysisResult {
                         if (pi.hasMoreSteps()) {
                             return recurse(pi.next())
                         } else {

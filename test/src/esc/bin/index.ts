@@ -4,7 +4,7 @@ import * as pr from "pareto-runtime"
 import * as pt from "pareto-test"
 
 import * as ap from "../../../../pub"
-import { testProject } from "../../data/testProject"
+import { _testProject } from "../../data/testProject"
 
 pt.runTests(
     {
@@ -24,7 +24,7 @@ pt.runTests(
                             pathString,
                             ($i) => {
                                 const res = ap.analysePath(
-                                    testProject,
+                                    _testProject,
                                     ap.parseFilePath(pathString)
                                 )
                                 if (expectedError === null) {

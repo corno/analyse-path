@@ -1,6 +1,7 @@
+import * as pr from "pareto-runtime"
 
-export type ParsedFilePath = {
-    directoryPath: string[]
-    fileName: string
-    extension: string | null
+export type TParsedFilePath = {
+    readonly "directoryPath": string[]
+    readonly "fileName": string
+    readonly "extension": pr.optional<string>
 }

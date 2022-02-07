@@ -1,10 +1,10 @@
 import * as path from "path"
-import { ParsedFilePath } from "../interface/types/parsedFilePath"
+import { TParsedFilePath } from "../interface/types/parsedFilePath"
 
 
 export function parseFilePath(
     filePath: string,
-): ParsedFilePath {
+): TParsedFilePath {
     const normalizedFilePath = path.normalize(filePath)
     const extWithLeadingDot = path.extname(normalizedFilePath)
     return {
