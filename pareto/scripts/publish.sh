@@ -4,36 +4,32 @@ dir=`realpath $(dirname "$0")`
 #make sure everything is pushed
 git push && \
 
-#validate that everything is committed (to make sure we're not messing with open work with updatePackage)
-git diff --exit-code && \
+#validate that everything is committed and pushed (to make sure we're not messing with open work with updatePackage)
+git diff --exit-code && git log origin/master..master --exit-code && \
 
 #make sure latest packages are installed
-$dir/updatePackage.sh ../pub && \
-
-#validate that everything is committed
-git diff --exit-code && \
+"$dir/updatePackage.sh" "../$2" && \
 
 #buildAndTest
-$dir/buildAndTest.sh && \
+"$dir/buildAndTest.sh" && \
 
-#analyse
-$dir/analysePackage.sh && \
-$dir/analyseAllTypeScriptProjects.sh && \
+#validate that everything is still committed after the update and build
+git diff --exit-code && \
 
 #bump version and store in variable
-pushd ../pub && \
+pushd "../$2" > /dev/null && \
 newVersion=$(npm version "$1") && \
 popd && \
 
 #commit package.json with new version number
 git add .. && \
-git commit -m "version bumped to $newVersion" && \
+git commit -m "$2 version bumped to $newVersion" && \
 
 #create a tag
-git tag -a "$newVersion" -m "$newVersion" && \
+git tag -a "$2-$newVersion" -m "$2:$newVersion" && \
 git push && \
 
 #publish
-pushd ../pub && \
+pushd "../$2" > /dev/null && \
 npm publish && \
 popd

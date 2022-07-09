@@ -1,30 +1,30 @@
 import * as ap from "../../../pub"
 
 export const _testProject: ap.TDirectory = {
-    type: ["type", {
-        nodes: {
+    'type': ["type", {
+        'nodes': {
             "f.txt": {
-                type: ["file", {}],
+                'type': ["file", {}],
             },
             "td": {
-                type: ["directory", {
-                    type: ["type", {
-                        nodes: {
+                'type': ["directory", {
+                    'type': ["type", {
+                        'nodes': {
                             "f.txt": {
-                                type: ["file", {}],
+                                'type': ["file", {}],
                             }
                         }
                     }]
                 }]
             },
             "ddd": {
-                type: ["directory", {
+                'type': ["directory", {
                     "type": ["directory dictionary", {
                         "definition": {
                             "type": ["type", {
-                                nodes: {
+                                'nodes': {
                                     "f.txt": {
-                                        type: ["file", {}]
+                                        'type': ["file", {}]
                                     }
                                 }
                             }]
@@ -33,20 +33,20 @@ export const _testProject: ap.TDirectory = {
                 }]
             },
             "fdd": {
-                type: ["directory", {
+                'type': ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
                         "extensions": ([`txt`]),
-                        recursive: true,
+                        'recursive': true,
                     }]
                 }]
             },
             "fddnr": {
-                type: ["directory", {
+                'type': ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
                         "extensions": ([`txt`]),
-                        recursive: false,
+                        'recursive': false,
                     }]
                 }]
             },

@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-pushd $1 && \
-ncu -u --packageFile package.json && \
-nsi && \
-popd
+
+part="../$1"
+
+if [ -d "$part" ]
+then
+    npx npm-check-updates -u --packageFile "$part/package.json" && \
+    npx npm-safe-install -t "$part/"
+fi
