@@ -1,5 +1,5 @@
 {
-  "name": "analyse-path",
+  "name": "analyse-path-lib",
   "version": "0.2.3",
   "description": "analyses a file system path against a specified expected filesystem structure",
   "main": "dist/index.js",
