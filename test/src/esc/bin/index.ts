@@ -3,7 +3,7 @@
 import * as pr from "pareto-runtime"
 import * as pt from "pareto-test"
 
-import * as ap from "../../../../pub"
+import * as ap from "../../../../lib"
 import { _testProject } from "../../data/testProject"
 
 pt.runTests(

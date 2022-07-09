@@ -1,4 +1,4 @@
-import * as ap from "../../../pub"
+import * as ap from "../../../lib"
 
 export const _testProject: ap.TDirectory = {
     'type': ["type", {
