@@ -1,4 +1,4 @@
-import * as pr from "pareto-runtime"
+import * as pl from "pareto-lib-core"
 
 import { TAnalysisResult } from "../interface/types/analysisResult"
 import { TDirectory } from "../interface/types/fileSystemStructure"
@@ -70,7 +70,7 @@ export function analysePath(
     ): TAnalysisResult {
         switch ($d.type[0]) {
             case "directory dictionary":
-                return pr.cc($d.type[1], ($d) => {
+                return pl.cc($d.type[1], ($d) => {
                     if (pi.hasMoreSteps()) {
 
                         return analyseDictionary(
@@ -87,7 +87,7 @@ export function analysePath(
                     }
                 })
             case "files dictionary":
-                return pr.cc($d.type[1], ($d) => {
+                return pl.cc($d.type[1], ($d) => {
                     function handleFile(
                         pi: PathIterator<string>,
                     ): TAnalysisResult {
@@ -152,7 +152,7 @@ export function analysePath(
                     }
                 })
             case "type":
-                return pr.cc($d.type[1], ($d) => {
+                return pl.cc($d.type[1], ($d) => {
                     if (pi.hasMoreSteps()) {
                         const name = pi.getCurrentStepName()
                         const node = $d.nodes[name]
@@ -165,7 +165,7 @@ export function analysePath(
                         } else {
                             switch (node.type[0]) {
                                 case "directory":
-                                    return pr.cc(node.type[1], ($) => {
+                                    return pl.cc(node.type[1], ($) => {
                                         return analyseDictionary(
                                             pi.next(),
                                             $,
@@ -173,7 +173,7 @@ export function analysePath(
                                         )
                                     })
                                 case "file":
-                                    return pr.cc(node.type[1], ($) => {
+                                    return pl.cc(node.type[1], ($) => {
                                         return createAnalysisResult(
                                             pi,
                                             `${pathPattern}/${name}`,
@@ -181,7 +181,7 @@ export function analysePath(
                                         )
                                     })
                                 default:
-                                    return pr.au(node.type[0])
+                                    return pl.au(node.type[0])
                             }
                         }
                     } else {
@@ -195,7 +195,7 @@ export function analysePath(
                         } else {
                             switch (node.type[0]) {
                                 case "directory":
-                                    return pr.cc(node.type[1], ($) => {
+                                    return pl.cc(node.type[1], ($) => {
                                         return createAnalysisResult(
                                             pi,
                                             `${pathPattern}/${fileNameWithExtension}`,
@@ -203,7 +203,7 @@ export function analysePath(
                                         )
                                     })
                                 case "file":
-                                    return pr.cc(node.type[1], (node) => {
+                                    return pl.cc(node.type[1], (node) => {
                                         return createAnalysisResult(
                                             pi,
                                             `${pathPattern}/${fileNameWithExtension}`,
@@ -211,13 +211,13 @@ export function analysePath(
                                         )
                                     })
                                 default:
-                                    return pr.au(node.type[0])
+                                    return pl.au(node.type[0])
                             }
                         }
                     }
                 })
             default:
-                return pr.au($d.type[0])
+                return pl.au($d.type[0])
         }
     }
     return analyseDictionary(

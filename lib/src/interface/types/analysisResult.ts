@@ -1,7 +1,7 @@
-import * as pr from "pareto-runtime"
+import * as pa from "pareto-api-core"
 
 export type TAnalysisResult = {
     readonly "pathPattern": string,
     readonly "path": string[],
-    readonly "error": pr.optional<string>,
+    readonly "error": pa.optional<string>,
 }
