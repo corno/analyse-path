@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import * as pr from "pareto-runtime"
+import * as pr from "pareto-bin-core"
 import * as pt from "pareto-test"
 
 import * as ap from "../../../../lib"
@@ -77,6 +77,10 @@ pt.runTests(
                 },
             )
         },
-        log: pr.log,
+        log: ($) => {
+            const out = pr.createStdOut()
+            out.write($)
+            out.write("\n")
+        },
     }
 )
